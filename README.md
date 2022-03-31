@@ -27,3 +27,13 @@ yarn build
 ```
 
 ## Roadmap
+
+[x] - Install Laravel 9
+[x] - Install Laravel Vite
+[x] - Install Quasar with vite Plugin
+[] - Integrate backend with Sanctum
+[] - Resolve login logic
+
+## Bugs
+
+Mdi icons dont work.
