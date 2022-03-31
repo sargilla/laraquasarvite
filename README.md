@@ -34,9 +34,9 @@ yarn build
 
 [x] - Install Quasar with vite Plugin
 
-[] - Integrate backend with Sanctum
+[ ] - Integrate backend with Sanctum
 
-[] - Resolve login logic
+[ ] - Resolve login logic
 
 ## Bugs
 
