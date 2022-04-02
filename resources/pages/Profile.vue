@@ -1,18 +1,21 @@
 <template>
     <q-page padding>
-        <div>{{ message }}</div>
+        <p class="text-h6">User Profile</p>
+        <p>
+            {{ user.name }}
+        </p>
     </q-page>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
-const message = ref();
+const user = ref({});
 
 onMounted(() => {
     axios
-        .get("/api/message")
-        .then(({ data }) => (message.value = data))
+        .get("/api/user")
+        .then(({ data }) => (user.value = data))
         .catch((e) => console.log(e.response));
 });
 </script>

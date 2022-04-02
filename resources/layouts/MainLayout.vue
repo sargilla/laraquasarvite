@@ -38,6 +38,13 @@
                         </q-item-section>
                     </q-item>
                 </q-list>
+                <q-list padding class="text-grey-8">
+                    <q-item v-ripple clickable :to="{ name: 'Profile' }">
+                        <q-item-section>
+                            <q-item-label>Profile</q-item-label>
+                        </q-item-section>
+                    </q-item>
+                </q-list>
             </q-scroll-area>
         </q-drawer>
 

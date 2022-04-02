@@ -44,6 +44,24 @@ const Router = createRouter({
     hashbang: false,
 });
 
+Router.beforeEach((to, from, next) => {
+    // instead of having to check every route record with
+    // to.matched.some(record => record.meta.requiresAuth)
+    // if (to.meta.requiresAuth && !auth.isLoggedIn()) {
+    // if (to.meta.requiresAuth) {
+    //     // this route requires auth, check if logged in
+    //     // if not, redirect to login page.
+    //     return {
+    //         path: "/login",
+    //         // save the location we were at to come back later
+    //         query: { redirect: to.fullPath },
+    //     };
+    // }
+    if (to.name !== "Login" && to.meta.requiresAuth)
+        next({ name: "Login", query: { redirect: to.fullPath } });
+    else next();
+});
+
 myApp.use(Router);
 // Assumes you have a <div id="app"></div> in your index.html
 myApp.mount("#app");

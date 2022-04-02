@@ -1,10 +1,13 @@
+import AuthRoutes from "./authRoutes";
 import UsersRoutes from "./usersRoutes";
 
 const MainLayout = () => import("@/layouts/MainLayout.vue");
 const Home = () => import("@/pages/Home.vue");
 const About = () => import("@/pages/About.vue");
+const Profile = () => import("@/pages/Profile.vue");
 const Error404 = () => import("@/pages/Error404.vue");
 const routes = [
+    AuthRoutes,
     UsersRoutes,
     {
         path: "/",

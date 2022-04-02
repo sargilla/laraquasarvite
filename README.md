@@ -34,10 +34,12 @@ yarn build
 
 [x] - Install Quasar with vite Plugin
 
-[ ] - Integrate backend with Sanctum
+[x] - Api requests without auth
 
-[ ] - Resolve login logic
+[x] - Redirect to login on protected routes
+
+[ ] - Api auth logic with Sanctum SPA
 
 ## Bugs
 
-Mdi icons dont work.
+Mdi icons doesn't work.

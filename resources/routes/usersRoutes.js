@@ -5,7 +5,7 @@ let UsersRoutes = {
     path: "/users",
     component: MainLayout,
     children: [{ path: "", component: Users, name: "Users" }],
-    meta: { auth: false },
+    meta: { requiresAuth: true },
 };
 
 export default UsersRoutes;
