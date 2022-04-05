@@ -5,10 +5,9 @@
 </template>
 
 <script setup>
-import axios from "axios";
+import axios from "@/boot/axios";
 import { ref, onMounted } from "vue";
 const message = ref();
-
 onMounted(() => {
     axios
         .get("/api/message")

@@ -6,6 +6,7 @@ import quasarLang from "quasar/lang/es";
 import routes from "../routes/index";
 import quasarIconSet from "quasar/icon-set/svg-mdi-v6";
 import { createRouter, createWebHistory } from "vue-router";
+
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 
@@ -15,6 +16,7 @@ import "quasar/src/css/index.sass";
 // Assumes your root component is App.vue
 // and placed in same folder as main.js
 import App from "./App.vue";
+import axios from "@/boot/axios";
 
 const myApp = createApp(App);
 
@@ -44,22 +46,51 @@ const Router = createRouter({
     hashbang: false,
 });
 
-Router.beforeEach((to, from, next) => {
-    // instead of having to check every route record with
-    // to.matched.some(record => record.meta.requiresAuth)
-    // if (to.meta.requiresAuth && !auth.isLoggedIn()) {
-    // if (to.meta.requiresAuth) {
-    //     // this route requires auth, check if logged in
-    //     // if not, redirect to login page.
-    //     return {
-    //         path: "/login",
-    //         // save the location we were at to come back later
-    //         query: { redirect: to.fullPath },
-    //     };
-    // }
-    if (to.name !== "Login" && to.meta.requiresAuth)
+/* Can mixin for route filter v-if="can('dashboard') " */
+// Vue.mixin({
+//   methods: {
+//      can: (key) => Laravel.user && Laravel.user.permissions.includes(key)
+//   }
+// })
+
+const userLogged = async () => {
+    if (localStorage.getItem("userLogged")) {
+        return JSON.parse(localStorage.getItem("userLogged"));
+    } else {
+        let data = await axios.get("/api/is-logged").data;
+        if (data) {
+            console.log("guardando");
+            localStorage.setItem("userLogged", JSON.stringify(data));
+        }
+        return data;
+    }
+};
+
+Router.beforeEach(async (to, from, next) => {
+    let userLogged = false;
+
+    if (localStorage.getItem("userLogged")) {
+        userLogged = JSON.parse(localStorage.getItem("userLogged"));
+    } else {
+        let data = await axios.get("/api/is-logged");
+        if (data.data) {
+            userLogged = data.data;
+        }
+    }
+
+    console.log(userLogged);
+    if (to.name !== "Login" && to.meta.requiresAuth && !userLogged)
         next({ name: "Login", query: { redirect: to.fullPath } });
     else next();
+    /*
+      For permissiones in routes
+      
+      if (to.meta.permissions && to.meta.permissions.length > 0) {
+        let isAllowed = user && user.permissions.some(p => to.meta.permissions.includes(p))
+        
+        if (! isAllowed) return next('/')
+     }
+    */
 });
 
 myApp.use(Router);

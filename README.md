@@ -38,7 +38,11 @@ yarn build
 
 [x] - Redirect to login on protected routes
 
-[ ] - Api auth logic with Sanctum SPA
+[x] - Login and Register with Sanctum and Fortify
+
+[ ] - Register and login validation
+
+[ ] - Permission and Roles with Spatie Permissions Front and Back
 
 ## Bugs
 
