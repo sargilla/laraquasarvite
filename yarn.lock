@@ -1044,6 +1044,11 @@ util-deprecate@^1.0.2:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
+v-money@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/v-money/-/v-money-0.8.1.tgz#dc28cf3be915c5a6c52bfe1085075e1fe7ae9db5"
+  integrity sha512-raz87AP5F2YEpv1GAocI3SC/y9af1+TQeZQIhAK5UNovho6dnh6RQBa5UG8ZNC+BPLpUh5VECi7EWTjr4+4s1g==
+
 vite-plugin-laravel@^0.2.0-beta.9:
   version "0.2.0-beta.9"
   resolved "https://registry.yarnpkg.com/vite-plugin-laravel/-/vite-plugin-laravel-0.2.0-beta.9.tgz#5951ae4ff55c8bb7375de812ea7c4cc30ed512c6"

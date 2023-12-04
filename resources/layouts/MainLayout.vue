@@ -31,6 +31,13 @@
                         </q-item-section>
                     </q-item>
                 </q-list>
+                 <q-list padding class="text-grey-8">
+                    <q-item v-ripple clickable :to="{ name: 'Forms' }">
+                        <q-item-section>
+                            <q-item-label>Forms</q-item-label>
+                        </q-item-section>
+                    </q-item>
+                </q-list>
                 <q-list padding class="text-grey-8">
                     <q-item v-ripple clickable :to="{ name: 'Users' }">
                         <q-item-section>
@@ -68,11 +75,12 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref } from 'vue';
+
+import { useRouter } from 'vue-router';
 
 const leftDrawerOpen = ref(false);
-const route = useRouter();
+// const route = useRouter();
 
 const toggleLeftDrawer = () => {
     leftDrawerOpen.value = !leftDrawerOpen.value;
